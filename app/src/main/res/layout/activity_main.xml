@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/activity_vertical_margin"
+        android:orientation="vertical">
+
+        <!-- RSRP chart -->
+        <TextView
+            style="@style/ChartHead"
+            android:text="@string/RSRP_chart"/>
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/chart_RSRP"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/chart_height"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"/>
+
+        <!-- RSRQ chart -->
+        <TextView
+            style="@style/ChartHead"
+            android:text="@string/RSRQ_chart"/>
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/chart_RSRQ"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/chart_height"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"/>
+
+        <!-- SINR chart -->
+        <TextView
+            style="@style/ChartHead"
+            android:text="@string/SINR_chart"/>
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/chart_SINR"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/chart_height"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"/>
+
+        <!-- Current Network Info -->
+        <TextView
+            style="@style/ChartHead"
+            android:text="@string/current_network_info" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:padding="@dimen/activity_horizontal_margin"
+            android:orientation="horizontal"
+            android:background="@color/gray_dark"
+            android:baselineAligned="false">
+
+            <!-- RSRP Column -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/title_RSRP"
+                    style="@style/TableHead"
+                    android:text="@string/title_RSRP"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ProgressBar
+                        android:id="@+id/progress_RSRP"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/progress_height"
+                        android:max="100"
+                        tools:progress="100"
+                        tools:progressDrawable="@drawable/green_gradient_progress"/>
+
+                    <TextView
+                        android:id="@+id/current_RSRP_value"
+                        style="@style/TableValue"
+                        tools:text="-80"/>
+                </RelativeLayout>
+            </LinearLayout>
+
+            <!-- RSRQ Column -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/title_RSRQ"
+                    style="@style/TableHead"
+                    android:text="@string/title_RSRQ"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ProgressBar
+                        android:id="@+id/progress_RSRQ"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/progress_height"
+                        android:max="100"
+                        tools:progress="100"
+                        tools:progressDrawable="@drawable/yellow_gradient_progress"/>
+
+                    <TextView
+                        android:id="@+id/current_RSRQ_value"
+                        style="@style/TableValue"
+                        tools:text="-15"/>
+                </RelativeLayout>
+            </LinearLayout>
+
+            <!-- SINR Column -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/title_SINR"
+                    style="@style/TableHead"
+                    android:text="@string/title_SINR"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ProgressBar
+                        android:id="@+id/progress_SINR"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/progress_height"
+                        android:max="100"
+                        tools:progress="100"
+                        tools:progressDrawable="@drawable/red_gradient_progress"/>
+
+                    <TextView
+                        android:id="@+id/current_SINR_value"
+                        style="@style/TableValue"
+                        tools:text="-5"/>
+                </RelativeLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

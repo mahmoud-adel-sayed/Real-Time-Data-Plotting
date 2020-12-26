@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Digis^2 Task</string>
+    <string name="title_main_screen">DIGIS SQUARED</string>
+
+    <string name="RSRP_chart">RSRP Chart</string>
+    <string name="RSRQ_chart">RSRQ Chart</string>
+    <string name="SINR_chart">SINR Chart</string>
+
+    <string name="title_RSRP">RSRP</string>
+    <string name="title_RSRQ">RSRQ</string>
+    <string name="title_SINR">SINR</string>
+
+    <string name="current_network_info">Current Network Info</string>
+
+    <string name="err_no_internet_connection">There is no internet connection</string>
+    <string name="retry">Retry</string>
+</resources>
