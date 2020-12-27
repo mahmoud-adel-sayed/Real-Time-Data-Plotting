@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements
         HasSupportFragmentInjector {
     private static final int WAIT_DURATION = 2000; // In millis
     private static final int ANIMATION_DURATION = 500; // In millis
+    private static final int MAX_VISIBLE_X_RANGE = 20;
 
     private static final int BLUE_DATA_SET_INDEX = 0;
     private static final int RED_DATA_SET_INDEX = 1;
@@ -225,7 +226,7 @@ public class MainActivity extends AppCompatActivity implements
         axis.setDrawAxisLine(true);
         axis.setDrawGridLines(false);
         axis.setCenterAxisLabels(false);
-        axis.setGranularity(10f);
+        axis.setGranularity(5f);
         axis.setValueFormatter(new ValueFormatter() {
             @Override
             public String getFormattedValue(float value) {
@@ -282,7 +283,7 @@ public class MainActivity extends AppCompatActivity implements
         set.setCircleColor(color);
         set.setDrawValues(false);
         set.setDrawCircleHole(false);
-        set.setMode(LineDataSet.Mode.LINEAR);
+        set.setMode(LineDataSet.Mode.CUBIC_BEZIER);
         return set;
     }
 
@@ -292,26 +293,48 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     private void addEntriesToCharts(@NonNull NetInfo netInfo) {
-        mLineDataRSRP.addEntry(getEntry(netInfo.getRSRP()), BLUE_DATA_SET_INDEX);
-        mLineDataRSRP.addEntry(getEntry(ChartType.RSRP.scale(netInfo.getRSRP())), RED_DATA_SET_INDEX);
-        mLineDataRSRP.addEntry(getEntry(ChartType.RSRP.scale(netInfo.getRSRP())), GREEN_DATA_SET_INDEX);
+        addEntriesToChartRSRP(netInfo);
+        addEntriesToChartRSRQ(netInfo);
+        addEntriesToChartSINR(netInfo);
+    }
+
+    private void addEntriesToChartRSRP(NetInfo netInfo) {
+        int value = netInfo.getRSRP();
+        Entry mainEntry = getEntry(value);
+        mLineDataRSRP.addEntry(mainEntry, BLUE_DATA_SET_INDEX);
+        mLineDataRSRP.addEntry(getEntry(ChartType.RSRP.scale(value)), RED_DATA_SET_INDEX);
+        mLineDataRSRP.addEntry(getEntry(ChartType.RSRP.scale(value)), GREEN_DATA_SET_INDEX);
         mLineDataRSRP.notifyDataChanged();
+
         mChartRSRP.notifyDataSetChanged();
-        mChartRSRP.invalidate();
+        mChartRSRP.setVisibleXRangeMaximum(MAX_VISIBLE_X_RANGE);
+        mChartRSRP.moveViewToX(mainEntry.getX());
+    }
 
-        mLineDataRSRQ.addEntry(getEntry(netInfo.getRSRQ()), BLUE_DATA_SET_INDEX);
-        mLineDataRSRQ.addEntry(getEntry(ChartType.RSRQ.scale(netInfo.getRSRQ())), RED_DATA_SET_INDEX);
-        mLineDataRSRQ.addEntry(getEntry(ChartType.RSRQ.scale(netInfo.getRSRQ())), GREEN_DATA_SET_INDEX);
+    private void addEntriesToChartRSRQ(NetInfo netInfo) {
+        int value = netInfo.getRSRQ();
+        Entry mainEntry = getEntry(value);
+        mLineDataRSRQ.addEntry(mainEntry, BLUE_DATA_SET_INDEX);
+        mLineDataRSRQ.addEntry(getEntry(ChartType.RSRQ.scale(value)), RED_DATA_SET_INDEX);
+        mLineDataRSRQ.addEntry(getEntry(ChartType.RSRQ.scale(value)), GREEN_DATA_SET_INDEX);
         mLineDataRSRQ.notifyDataChanged();
-        mChartRSRQ.notifyDataSetChanged();
-        mChartRSRQ.invalidate();
 
-        mLineDataSINR.addEntry(getEntry(netInfo.getSINR()), BLUE_DATA_SET_INDEX);
-        mLineDataSINR.addEntry(getEntry(ChartType.SINR.scale(netInfo.getSINR())), RED_DATA_SET_INDEX);
-        mLineDataSINR.addEntry(getEntry(ChartType.SINR.scale(netInfo.getSINR())), GREEN_DATA_SET_INDEX);
+        mChartRSRQ.notifyDataSetChanged();
+        mChartRSRQ.setVisibleXRangeMaximum(MAX_VISIBLE_X_RANGE);
+        mChartRSRQ.moveViewToX(mainEntry.getX());
+    }
+
+    private void addEntriesToChartSINR(NetInfo netInfo) {
+        int value = netInfo.getSINR();
+        Entry mainEntry = getEntry(value);
+        mLineDataSINR.addEntry(mainEntry, BLUE_DATA_SET_INDEX);
+        mLineDataSINR.addEntry(getEntry(ChartType.SINR.scale(value)), RED_DATA_SET_INDEX);
+        mLineDataSINR.addEntry(getEntry(ChartType.SINR.scale(value)), GREEN_DATA_SET_INDEX);
         mLineDataSINR.notifyDataChanged();
+
         mChartSINR.notifyDataSetChanged();
-        mChartSINR.invalidate();
+        mChartSINR.setVisibleXRangeMaximum(MAX_VISIBLE_X_RANGE);
+        mChartSINR.moveViewToX(mainEntry.getX());
     }
 
     private void setTableData(@NonNull NetInfo netInfo) {
