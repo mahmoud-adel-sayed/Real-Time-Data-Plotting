@@ -7,6 +7,7 @@ import androidx.annotation.DrawableRes;
 public enum ChartType {
     RSRP(-140f, -60f, 0.3f) {
         @Override
+        @DrawableRes
         int getProgressDrawable(int value) {
             if (value >= -80)
                 return EXCELLENT_SIGNAL;
@@ -20,6 +21,7 @@ public enum ChartType {
     },
     RSRQ(-30f, 0f, 0.5f) {
         @Override
+        @DrawableRes
         int getProgressDrawable(int value) {
             if (value >= -10)
                 return EXCELLENT_SIGNAL;
@@ -33,6 +35,7 @@ public enum ChartType {
     },
     SINR(-10f, 30f, 0.8f) {
         @Override
+        @DrawableRes
         int getProgressDrawable(int value) {
             if (value >= 20)
                 return EXCELLENT_SIGNAL;
