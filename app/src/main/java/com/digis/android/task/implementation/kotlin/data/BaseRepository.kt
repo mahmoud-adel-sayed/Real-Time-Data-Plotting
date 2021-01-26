@@ -12,6 +12,6 @@ open class BaseRepository(val app: Application) {
 
     fun onUnsubscribe() {
         for (remoteDataSource in remoteDataSources)
-            remoteDataSource.cancel();
+            remoteDataSource.cancel()
     }
 }

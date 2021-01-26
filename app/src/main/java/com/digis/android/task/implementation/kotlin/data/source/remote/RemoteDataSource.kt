@@ -15,7 +15,7 @@ class RemoteDataSource<V>(private var call: Call<V>) {
         }
     }
 
-    @SuppressWarnings("unused")
+    @Suppress("unused")
     fun retry(callback: RemoteCallback<V>) {
         this.callback = callback
         call = call.clone()
