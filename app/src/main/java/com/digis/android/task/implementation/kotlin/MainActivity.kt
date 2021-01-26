@@ -116,7 +116,7 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
         if (message == null) {
             return
         }
-        Snackbar.make(root, message, Snackbar.LENGTH_INDEFINITE).apply {
+        Snackbar.make(root, message, Snackbar.LENGTH_INDEFINITE).run {
             setAction(getString(R.string.retry), listener)
             show()
             view.findViewById<TextView>(com.google.android.material.R.id.snackbar_text)?.let {
@@ -126,45 +126,51 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
     }
 
     private fun setupChartRSRP() {
-        chartRSRP.setupChart()
-        chartRSRP.setupXAxis()
-        chartRSRP.setupYAxis(ChartType.RSRP.min, ChartType.RSRP.max)
         lineDataRSRP = LineData(
                 createLineDataSet(LABEL_RSRP_P, Color.BLUE),
                 createLineDataSet(LABEL_RSRP_S1, Color.RED),
                 createLineDataSet(LABEL_RSRP_S2, Color.GREEN)
         )
-        chartRSRP.data = lineDataRSRP
-        chartRSRP.invalidate()
-        chartRSRP.legend.isEnabled = true
+        with(chartRSRP) {
+            setupChart()
+            setupXAxis()
+            setupYAxis(min = ChartType.RSRP.min, max = ChartType.RSRP.max)
+            data = lineDataRSRP
+            invalidate()
+            legend.isEnabled = true
+        }
     }
 
     private fun setupChartRSRQ() {
-        chartRSRQ.setupChart()
-        chartRSRQ.setupXAxis()
-        chartRSRQ.setupYAxis(ChartType.RSRQ.min, ChartType.RSRQ.max)
         lineDataRSRQ = LineData(
                 createLineDataSet(LABEL_RSRQ_P, Color.BLUE),
                 createLineDataSet(LABEL_RSRQ_S1, Color.RED),
                 createLineDataSet(LABEL_RSRQ_S2, Color.GREEN)
         )
-        chartRSRQ.data = lineDataRSRQ
-        chartRSRQ.invalidate()
-        chartRSRQ.legend.isEnabled = true
+        with(chartRSRQ) {
+            setupChart()
+            setupXAxis()
+            setupYAxis(min = ChartType.RSRQ.min, max = ChartType.RSRQ.max)
+            data = lineDataRSRQ
+            invalidate()
+            legend.isEnabled = true
+        }
     }
 
     private fun setupChartSINR() {
-        chartSINR.setupChart()
-        chartSINR.setupXAxis()
-        chartSINR.setupYAxis(ChartType.SINR.min, ChartType.SINR.max)
         lineDataSINR = LineData(
                 createLineDataSet(LABEL_SINR_P, Color.BLUE),
                 createLineDataSet(LABEL_SINR_S1, Color.RED),
                 createLineDataSet(LABEL_SINR_S2, Color.GREEN)
         )
-        chartSINR.data = lineDataSINR
-        chartSINR.invalidate()
-        chartSINR.legend.isEnabled = true
+        with(chartSINR) {
+            setupChart()
+            setupXAxis()
+            setupYAxis(min = ChartType.SINR.min, max = ChartType.SINR.max)
+            data = lineDataSINR
+            invalidate()
+            legend.isEnabled = true
+        }
     }
 
     private fun addEntriesToCharts(netInfo: NetInfo) {
@@ -175,57 +181,70 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
 
     private fun addEntriesToChartRSRP(netInfo: NetInfo) {
         val mainEntry = getEntry(netInfo.RSRP)
-        lineDataRSRP.addEntry(mainEntry, BLUE_DATA_SET_INDEX)
-        lineDataRSRP.addEntry(getEntry(ChartType.RSRP.scale(netInfo.RSRP)), RED_DATA_SET_INDEX)
-        lineDataRSRP.addEntry(getEntry(ChartType.RSRP.scale(netInfo.RSRP)), GREEN_DATA_SET_INDEX)
-        lineDataRSRP.notifyDataChanged()
-
-        chartRSRP.notifyDataSetChanged()
-        chartRSRP.setVisibleXRangeMaximum(MAX_VISIBLE_X_RANGE)
-        chartRSRP.moveViewToX(mainEntry.x)
+        with(lineDataRSRP) {
+            addEntry(mainEntry, BLUE_DATA_SET_INDEX)
+            addEntry(getEntry(ChartType.RSRP.scale(netInfo.RSRP)), RED_DATA_SET_INDEX)
+            addEntry(getEntry(ChartType.RSRP.scale(netInfo.RSRP)), GREEN_DATA_SET_INDEX)
+            notifyDataChanged()
+        }
+        with(chartRSRP) {
+            notifyDataSetChanged()
+            setVisibleXRangeMaximum(MAX_VISIBLE_X_RANGE)
+            moveViewToX(mainEntry.x)
+        }
     }
 
     private fun addEntriesToChartRSRQ(netInfo: NetInfo) {
         val mainEntry = getEntry(netInfo.RSRQ)
-        lineDataRSRQ.addEntry(mainEntry, BLUE_DATA_SET_INDEX)
-        lineDataRSRQ.addEntry(getEntry(ChartType.RSRQ.scale(netInfo.RSRQ)), RED_DATA_SET_INDEX)
-        lineDataRSRQ.addEntry(getEntry(ChartType.RSRQ.scale(netInfo.RSRQ)), GREEN_DATA_SET_INDEX)
-        lineDataRSRQ.notifyDataChanged()
-
-        chartRSRQ.notifyDataSetChanged()
-        chartRSRQ.setVisibleXRangeMaximum(MAX_VISIBLE_X_RANGE)
-        chartRSRQ.moveViewToX(mainEntry.x)
+        with(lineDataRSRQ) {
+            addEntry(mainEntry, BLUE_DATA_SET_INDEX)
+            addEntry(getEntry(ChartType.RSRQ.scale(netInfo.RSRQ)), RED_DATA_SET_INDEX)
+            addEntry(getEntry(ChartType.RSRQ.scale(netInfo.RSRQ)), GREEN_DATA_SET_INDEX)
+            notifyDataChanged()
+        }
+        with(chartRSRQ) {
+            notifyDataSetChanged()
+            setVisibleXRangeMaximum(MAX_VISIBLE_X_RANGE)
+            moveViewToX(mainEntry.x)
+        }
     }
 
     private fun addEntriesToChartSINR(netInfo: NetInfo) {
         val mainEntry = getEntry(netInfo.SINR)
-        lineDataSINR.addEntry(mainEntry, BLUE_DATA_SET_INDEX)
-        lineDataSINR.addEntry(getEntry(ChartType.SINR.scale(netInfo.SINR)), RED_DATA_SET_INDEX)
-        lineDataSINR.addEntry(getEntry(ChartType.SINR.scale(netInfo.SINR)), GREEN_DATA_SET_INDEX)
-        lineDataSINR.notifyDataChanged()
-
-        chartSINR.notifyDataSetChanged()
-        chartSINR.setVisibleXRangeMaximum(MAX_VISIBLE_X_RANGE)
-        chartSINR.moveViewToX(mainEntry.x)
+        with(lineDataSINR) {
+            addEntry(mainEntry, BLUE_DATA_SET_INDEX)
+            addEntry(getEntry(ChartType.SINR.scale(netInfo.SINR)), RED_DATA_SET_INDEX)
+            addEntry(getEntry(ChartType.SINR.scale(netInfo.SINR)), GREEN_DATA_SET_INDEX)
+            notifyDataChanged()
+        }
+        with(chartSINR) {
+            notifyDataSetChanged()
+            setVisibleXRangeMaximum(MAX_VISIBLE_X_RANGE)
+            moveViewToX(mainEntry.x)
+        }
     }
 
     private fun setTableData(netInfo: NetInfo) {
-        progressRSRP.progressDrawable = ContextCompat.getDrawable(
-                this, ChartType.RSRP.getProgressDrawable(netInfo.RSRP)
-        )
-        progressRSRP.animate(ANIMATION_DURATION)
+        with(progressRSRP) {
+            progressDrawable = ContextCompat.getDrawable(
+                    this@MainActivity, ChartType.RSRP.getProgressDrawable(netInfo.RSRP)
+            )
+            animate(duration = ANIMATION_DURATION)
+        }
+        with(progressRSRQ) {
+            progressDrawable = ContextCompat.getDrawable(
+                    this@MainActivity, ChartType.RSRQ.getProgressDrawable(netInfo.RSRQ)
+            )
+            animate(duration = ANIMATION_DURATION)
+        }
+        with(progressSINR) {
+            progressDrawable = ContextCompat.getDrawable(
+                    this@MainActivity, ChartType.SINR.getProgressDrawable(netInfo.SINR)
+            )
+            animate(duration = ANIMATION_DURATION)
+        }
         currentRSRP.text = netInfo.RSRP.toString()
-
-        progressRSRQ.progressDrawable = ContextCompat.getDrawable(
-                this, ChartType.RSRQ.getProgressDrawable(netInfo.RSRQ)
-        )
-        progressRSRQ.animate(ANIMATION_DURATION)
         currentRSRQ.text = netInfo.RSRQ.toString()
-
-        progressSINR.progressDrawable = ContextCompat.getDrawable(
-                this, ChartType.SINR.getProgressDrawable(netInfo.SINR)
-        )
-        progressSINR.animate(ANIMATION_DURATION)
         currentSINR.text = netInfo.SINR.toString()
     }
 
@@ -253,7 +272,9 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
         private const val LABEL_SINR_S2 = "SINR S2"
 
         private fun getEntry(y: Int): Entry {
-            val calendar = Calendar.getInstance().apply { timeInMillis = System.currentTimeMillis() }
+            val calendar = Calendar.getInstance().also {
+                it.timeInMillis = System.currentTimeMillis()
+            }
             val hour = calendar.get(Calendar.HOUR_OF_DAY)
             val minute = calendar.get(Calendar.MINUTE)
             val second = calendar.get(Calendar.SECOND)
