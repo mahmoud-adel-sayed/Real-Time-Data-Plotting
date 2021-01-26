@@ -3,7 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'com.jakewharton.butterknife'
 
 project.ext {
-    archVersion = "2.0.0"
+    archVersion = "2.2.0"
     retrofitVersion = "2.0.2"
     okhttpVersion = "4.2.0"
     stethoVersion = "1.5.1"
@@ -46,11 +46,13 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.2.1'
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "androidx.fragment:fragment-ktx:1.2.5"
 
     // Arch Lifecycle
     annotationProcessor "androidx.lifecycle:lifecycle-compiler:$archVersion"
     implementation "androidx.lifecycle:lifecycle-runtime:$archVersion"
     implementation "androidx.lifecycle:lifecycle-extensions:$archVersion"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$archVersion"
 
     // Retrofit & okhttp
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"

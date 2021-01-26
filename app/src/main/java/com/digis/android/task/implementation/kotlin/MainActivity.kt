@@ -9,13 +9,13 @@ import android.view.Gravity
 import android.view.View
 import android.widget.ProgressBar
 import android.widget.TextView
+import androidx.activity.viewModels
 import androidx.annotation.ColorInt
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import butterknife.BindView
 import butterknife.ButterKnife
 import com.digis.android.task.R
@@ -74,7 +74,7 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
     private lateinit var lineDataRSRQ: LineData
     private lateinit var lineDataSINR: LineData
 
-    private lateinit var viewModel: MainViewModel
+    private val viewModel by viewModels<MainViewModel> { viewModelFactory }
     private val handler = Handler(Looper.getMainLooper())
     private val runnable = Runnable { getNextEntries() }
 
@@ -88,7 +88,6 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
         setupChartRSRQ()
         setupChartSINR()
 
-        viewModel = ViewModelProviders.of(this, viewModelFactory).get(MainViewModel::class.java)
         observeData()
         viewModel.getNetInfo()
     }
