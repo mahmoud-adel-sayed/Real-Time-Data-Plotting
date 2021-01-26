@@ -4,7 +4,6 @@ import android.app.Activity
 import android.app.Application
 import com.digis.android.task.implementation.kotlin.di.AppInjector
 import com.facebook.stetho.Stetho
-import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
 import javax.inject.Inject
