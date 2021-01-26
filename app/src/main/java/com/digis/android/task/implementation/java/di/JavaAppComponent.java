@@ -17,12 +17,13 @@ import dagger.android.AndroidInjectionModule;
         ViewModelModule.class,
         ActivityModule.class,
 })
-public interface AppComponent {
+public interface JavaAppComponent {
     @Component.Builder
     interface Builder {
         @BindsInstance
         Builder application(Application app);
-        AppComponent build();
+
+        JavaAppComponent build();
     }
 
     void inject(App app);

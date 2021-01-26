@@ -19,12 +19,12 @@ import dagger.android.support.HasSupportFragmentInjector;
  * {@link Injectable}.
  */
 public final class AppInjector {
-    private static AppComponent appComponent;
+    private static JavaAppComponent appComponent;
 
     private AppInjector() { }
 
     public static void init(App app) {
-        appComponent = DaggerAppComponent.builder().application(app).build();
+        appComponent = DaggerJavaAppComponent.builder().application(app).build();
         appComponent.inject(app);
         app.registerActivityLifecycleCallbacks(new Application.ActivityLifecycleCallbacks() {
             @Override
@@ -75,7 +75,7 @@ public final class AppInjector {
     }
 
     @SuppressWarnings("unused")
-    public static AppComponent getAppComponent() {
+    public static JavaAppComponent getAppComponent() {
         return appComponent;
     }
 }

@@ -14,13 +14,13 @@ import javax.inject.Singleton
     ViewModelModule::class,
     ActivityModule::class
 ])
-interface AppComponent {
+interface KotlinAppComponent {
     @Component.Builder
     interface Builder {
         @BindsInstance
         fun application(app: Application): Builder
 
-        fun build(): AppComponent
+        fun build(): KotlinAppComponent
     }
 
     fun inject(app: App)

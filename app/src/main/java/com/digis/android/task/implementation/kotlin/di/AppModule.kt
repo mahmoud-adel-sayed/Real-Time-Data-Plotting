@@ -21,7 +21,7 @@ class AppModule {
         logging.level = HttpLoggingInterceptor.Level.BODY
         val httpClient = OkHttpClient.Builder()
         httpClient.addNetworkInterceptor(StethoInterceptor())
-        httpClient.addInterceptor(logging);
+        httpClient.addInterceptor(logging)
         return Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())

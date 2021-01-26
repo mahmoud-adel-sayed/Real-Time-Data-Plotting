@@ -33,7 +33,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import dagger.android.AndroidInjector;
@@ -119,7 +118,7 @@ public class MainActivity extends AppCompatActivity implements
         mHandler = new Handler();
         mRunnable = this::getNextEntries;
 
-        mViewModel = ViewModelProviders.of(this, mViewModelFactory).get(MainViewModel.class);
+        mViewModel = new ViewModelProvider(this, mViewModelFactory).get(MainViewModel.class);
         observeData();
         mViewModel.getNetInfo();
     }
