@@ -1,4 +1,4 @@
-# Digis Squared Task
+# Real Time Data Plotting
 
 ### Important notes
 1. The three line charts shown in the app plots the actual values returned from the [Test API](http://51.195.89.92:6000/random) with the __blue lines__ & randomly scales these values (bounded by the min & max values for each chart type) and plots them for KPI simulation only in the green and red lines.
