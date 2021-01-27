@@ -1,7 +1,8 @@
 # Real Time Data Plotting
+This is a sample app that simulates real time data plotting. It fetches data from a [Test API][TestAPI] every two seconds and plot the returned values on line charts. There are two implementations of the app, one written in Kotlin, and the other in Java, but the behavior of the app is the same.
 
 ### Important notes
-1. The three line charts shown in the app plots the actual values returned from the [Test API](http://51.195.89.92:6000/random) with the __blue lines__ & randomly scales these values (bounded by the min & max values for each chart type) and plots them for KPI simulation only in the green and red lines.
+1. The three line charts shown in the app plots the actual values returned from the [Test API][TestAPI] with the __blue lines__ & randomly scales these values (bounded by the min & max values for each chart type) and plots them for KPI simulation only in the green and red lines.
 2. The bar chart shown at the end of the home screen shows __different gradient background colors__ for the 3 values (_RSRP_, _RSRQ_ and _SINR_) based on the signal strength (green refers to excellent signal, yellow good signal, orange fair signal, and red poor signal).
 3. When the app is put on the background (by pressing the home button) __data fetching is stopped__ (to preserve battery & CPU) and when the app is put back to the forground the __data fetching is resumed again__.
 4. _RSRP_ y values range from -140 to -60, _RSRQ_ y values range from -30 to 0, and _SINR_ from -10 to 30.
@@ -27,3 +28,4 @@ This sample app uses MVVM Archetecture, a well known archetecture for Android, t
 [gson]: https://github.com/google/gson
 [butterKnife]: https://github.com/JakeWharton/butterknife
 [charting]: https://github.com/PhilJay/MPAndroidChart
+[TestAPI]: http://51.195.89.92:6000/random
