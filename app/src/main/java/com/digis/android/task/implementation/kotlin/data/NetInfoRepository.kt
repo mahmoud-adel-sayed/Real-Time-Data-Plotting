@@ -8,6 +8,7 @@ import com.digis.android.task.implementation.kotlin.data.service.MainService
 import com.digis.android.task.implementation.kotlin.data.source.remote.RemoteDataSource
 import com.digis.android.task.implementation.kotlin.data.source.remote.RemoteResponseHandler
 import com.digis.android.task.implementation.kotlin.data.source.remote.Response
+import java.util.*
 import javax.inject.Inject
 
 class NetInfoRepository @Inject constructor(
@@ -16,10 +17,13 @@ class NetInfoRepository @Inject constructor(
 ) : BaseRepository(app) {
 
     fun getNetInfo(): LiveData<Response<NetInfo>> {
+        val id = Random().nextInt(BOUND) + 1
         val liveData = MutableLiveData<Response<NetInfo>>()
-        val remoteSource = RemoteDataSource(service.getNetInfo())
+        val remoteSource = RemoteDataSource(service.getNetInfo(id))
         remoteSource.execute(RemoteResponseHandler(app, liveData))
         addRemoteDataSource(remoteSource)
         return liveData
     }
 }
+
+private const val BOUND = 30

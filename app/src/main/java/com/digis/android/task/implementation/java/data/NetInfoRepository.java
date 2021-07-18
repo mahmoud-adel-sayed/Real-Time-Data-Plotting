@@ -13,7 +13,11 @@ import javax.inject.Inject;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import java.util.Random;
+
 public final class NetInfoRepository extends BaseRepository {
+    private static final int BOUND = 30;
+    private static final Random RANDOM = new Random();
 
     private final MainService mService;
 
@@ -24,8 +28,9 @@ public final class NetInfoRepository extends BaseRepository {
     }
 
     public LiveData<Response<NetInfo>> getNetInfo() {
+        int id = RANDOM.nextInt(BOUND) + 1;
         MutableLiveData<Response<NetInfo>> liveData = new MutableLiveData<>();
-        RemoteDataSource<NetInfo> remoteSource = new RemoteDataSource<>(mService.getNetInfo());
+        RemoteDataSource<NetInfo> remoteSource = new RemoteDataSource<>(mService.getNetInfo(id));
         remoteSource.execute(new RemoteResponseHandler<>(getApp(), liveData));
         addRemoteDataSource(remoteSource);
         return liveData;

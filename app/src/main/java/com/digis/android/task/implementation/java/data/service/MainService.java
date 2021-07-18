@@ -4,8 +4,9 @@ import com.digis.android.task.implementation.java.data.model.NetInfo;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 
 public interface MainService {
-    @GET("random")
-    Call<NetInfo> getNetInfo();
+    @GET("netInfo/{id}")
+    Call<NetInfo> getNetInfo(@Path("id") int id);
 }

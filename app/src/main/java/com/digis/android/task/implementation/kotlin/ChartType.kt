@@ -50,14 +50,9 @@ enum class ChartType(val min: Float, val max: Float, private val scalar: Float) 
 
     fun scale(value: Int): Int {
         val fraction = RANDOM.nextFloat() * scalar * value
-        var random = if (RANDOM.nextBoolean()) value + fraction else value - fraction
+        val random = if (RANDOM.nextBoolean()) value + fraction else value - fraction
         // Ensuring the random value is between the specified range
-        if (random < min)
-            random = min
-        else if (random > max)
-            random = max
-
-        return random.toInt()
+        return random.coerceIn(min, max).toInt()
     }
 
     @DrawableRes

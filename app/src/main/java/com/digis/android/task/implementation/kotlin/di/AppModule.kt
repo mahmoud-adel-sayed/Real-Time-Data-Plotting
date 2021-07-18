@@ -10,7 +10,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
-private const val BASE_URL = "http://51.195.89.92:6000/"
+private const val BASE_URL = "https://my-json-server.typicode.com/mahmoud-adel-sayed/Real-Time-Data-Plotting/"
 
 @Module
 class AppModule {
