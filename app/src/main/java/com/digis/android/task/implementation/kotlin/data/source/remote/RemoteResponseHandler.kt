@@ -12,6 +12,6 @@ open class RemoteResponseHandler<T>(
     }
 
     override fun onFailure(throwable: Throwable) {
-        liveData.value = Response.create(app, throwable, null)
+        liveData.value = Response.create(app, throwable)
     }
 }

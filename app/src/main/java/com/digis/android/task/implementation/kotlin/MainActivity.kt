@@ -20,6 +20,7 @@ import butterknife.BindView
 import butterknife.ButterKnife
 import com.digis.android.task.R
 import com.digis.android.task.implementation.kotlin.data.model.NetInfo
+import com.digis.android.task.implementation.kotlin.data.source.remote.Response
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.YAxis
 import com.github.mikephil.charting.data.Entry
@@ -94,13 +95,14 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
 
     private fun observeData() {
         viewModel.netInfoObservable.observe(this, Observer {
-            if (it.isSuccessful) {
-                val netInfo = it.data!!
-                addEntriesToCharts(netInfo)
-                setTableData(netInfo)
-                scheduleNextFetch()
-            } else {
-                showError(it.message)
+            when (it) {
+                is Response.Success -> {
+                    val netInfo = it.data
+                    addEntriesToCharts(netInfo)
+                    setTableData(netInfo)
+                    scheduleNextFetch()
+                }
+                is Response.Error -> showError(it.message)
             }
         })
     }
