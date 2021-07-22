@@ -38,7 +38,7 @@ public final class RemoteDataSource<V> {
 
     private final class ResponseCallback implements Callback<V> {
         @Override
-        public void onResponse(Call<V> call, Response<V> response) {
+        public void onResponse(@NonNull Call<V> call, Response<V> response) {
             V value = null;
             String errorBody = null;
             if (response.isSuccessful()) {
@@ -55,7 +55,7 @@ public final class RemoteDataSource<V> {
         }
 
         @Override
-        public void onFailure(Call<V> call, Throwable throwable) {
+        public void onFailure(Call<V> call, @NonNull Throwable throwable) {
             if (!call.isCanceled()) {
                 mCallback.onFailure(throwable);
             }

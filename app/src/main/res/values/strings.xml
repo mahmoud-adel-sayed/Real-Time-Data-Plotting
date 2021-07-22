@@ -13,5 +13,6 @@
     <string name="current_network_info">Current Network Info</string>
 
     <string name="err_no_internet_connection">There is no internet connection</string>
+    <string name="error_unknown">Unknown Error</string>
     <string name="retry">Retry</string>
 </resources>

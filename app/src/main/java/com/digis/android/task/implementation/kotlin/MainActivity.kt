@@ -94,7 +94,7 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
     }
 
     private fun observeData() {
-        viewModel.netInfoObservable.observe(this, Observer {
+        viewModel.netInfo.observe(this, Observer {
             when (it) {
                 is Response.Success -> {
                     val netInfo = it.data
@@ -103,6 +103,7 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
                     scheduleNextFetch()
                 }
                 is Response.Error -> showError(it.message)
+                is Response.Empty -> handleEmptyResponse()
             }
         })
     }
@@ -110,6 +111,8 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
     private fun scheduleNextFetch() = handler.postDelayed(runnable, WAIT_DURATION)
 
     private fun getNextEntries() = viewModel.getNetInfo()
+
+    private fun handleEmptyResponse(): Nothing = TODO()
 
     private fun showError(message: String?) = showSnackBar(message) { viewModel.getNetInfo() }
 

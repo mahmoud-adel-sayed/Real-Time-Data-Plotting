@@ -13,17 +13,10 @@ class MainViewModel @Inject constructor(
         private val repository: NetInfoRepository
 ) : ViewModel() {
 
-    private val netInfo: MutableLiveData<String> = MutableLiveData()
-    val netInfoObservable: LiveData<Response<NetInfo>> = netInfo.switchMap {
-        repository.getNetInfo()
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        repository.onUnsubscribe()
-    }
+    private val _netInfo: MutableLiveData<String> = MutableLiveData()
+    val netInfo: LiveData<Response<NetInfo>> = _netInfo.switchMap { repository.getNetInfo() }
 
     fun getNetInfo() {
-        netInfo.value = ""
+        _netInfo.value = ""
     }
 }

@@ -1,5 +1,7 @@
 package com.digis.android.task.implementation.kotlin.di
 
+import android.app.Application
+import com.digis.android.task.implementation.kotlin.data.LiveDataCallAdapterFactory
 import com.digis.android.task.implementation.kotlin.data.service.MainService
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import dagger.Module
@@ -16,7 +18,7 @@ private const val BASE_URL = "https://my-json-server.typicode.com/mahmoud-adel-s
 class AppModule {
     @Singleton
     @Provides
-    fun provideRetrofit(): Retrofit {
+    fun provideRetrofit(app: Application): Retrofit {
         val logging = HttpLoggingInterceptor()
         logging.level = HttpLoggingInterceptor.Level.BODY
         val httpClient = OkHttpClient.Builder()
@@ -25,6 +27,7 @@ class AppModule {
         return Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(LiveDataCallAdapterFactory(app))
                 .client(httpClient.build())
                 .build()
     }
