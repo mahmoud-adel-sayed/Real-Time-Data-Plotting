@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="ChartHead">
+    <style name="ChartHeadline">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/black</item>
-        <item name="android:textSize">@dimen/head</item>
+        <item name="android:textSize">@dimen/h6</item>
         <item name="android:textStyle">bold</item>
         <item name="android:layout_gravity">start</item>
     </style>
 
-    <style name="TableHead">
+    <style name="TableHeadline">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginBottom">@dimen/activity_small_margin</item>
         <item name="android:textColor">@color/gray</item>
-        <item name="android:textSize">@dimen/head</item>
+        <item name="android:textSize">@dimen/h6</item>
         <item name="android:textStyle">bold</item>
         <item name="android:layout_gravity">center_horizontal</item>
     </style>

@@ -14,7 +14,7 @@
 
         <!-- RSRP chart -->
         <TextView
-            style="@style/ChartHead"
+            style="@style/ChartHeadline"
             android:text="@string/RSRP_chart"/>
         <com.github.mikephil.charting.charts.LineChart
             android:id="@+id/chart_RSRP"
@@ -25,7 +25,7 @@
 
         <!-- RSRQ chart -->
         <TextView
-            style="@style/ChartHead"
+            style="@style/ChartHeadline"
             android:text="@string/RSRQ_chart"/>
         <com.github.mikephil.charting.charts.LineChart
             android:id="@+id/chart_RSRQ"
@@ -36,7 +36,7 @@
 
         <!-- SINR chart -->
         <TextView
-            style="@style/ChartHead"
+            style="@style/ChartHeadline"
             android:text="@string/SINR_chart"/>
         <com.github.mikephil.charting.charts.LineChart
             android:id="@+id/chart_SINR"
@@ -47,7 +47,7 @@
 
         <!-- Current Network Info -->
         <TextView
-            style="@style/ChartHead"
+            style="@style/ChartHeadline"
             android:text="@string/current_network_info" />
         <LinearLayout
             android:layout_width="match_parent"
@@ -68,7 +68,7 @@
 
                 <TextView
                     android:id="@+id/title_RSRP"
-                    style="@style/TableHead"
+                    style="@style/TableHeadline"
                     android:text="@string/title_RSRP"/>
 
                 <RelativeLayout
@@ -101,7 +101,7 @@
 
                 <TextView
                     android:id="@+id/title_RSRQ"
-                    style="@style/TableHead"
+                    style="@style/TableHeadline"
                     android:text="@string/title_RSRQ"/>
 
                 <RelativeLayout
@@ -133,7 +133,7 @@
 
                 <TextView
                     android:id="@+id/title_SINR"
-                    style="@style/TableHead"
+                    style="@style/TableHeadline"
                     android:text="@string/title_SINR"/>
 
                 <RelativeLayout

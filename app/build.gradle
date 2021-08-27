@@ -17,7 +17,7 @@ android {
     buildToolsVersion "30.0.2"
 
     defaultConfig {
-        applicationId "com.digis.android.task"
+        applicationId "com.example.android.rtdp"
         minSdkVersion 19
         targetSdkVersion 30
         versionCode 1

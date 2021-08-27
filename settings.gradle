@@ -1,2 +1,2 @@
 include ':app'
-rootProject.name = "Digis Squared Task"
+rootProject.name = "Real Time Data Plotting"
