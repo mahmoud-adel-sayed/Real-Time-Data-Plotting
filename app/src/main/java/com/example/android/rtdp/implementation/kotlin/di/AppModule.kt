@@ -25,11 +25,11 @@ class AppModule {
         httpClient.addNetworkInterceptor(StethoInterceptor())
         httpClient.addInterceptor(logging)
         return Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(LiveDataCallAdapterFactory(app))
-                .client(httpClient.build())
-                .build()
+            .baseUrl(BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .addCallAdapterFactory(LiveDataCallAdapterFactory(app))
+            .client(httpClient.build())
+            .build()
     }
 
     @Singleton

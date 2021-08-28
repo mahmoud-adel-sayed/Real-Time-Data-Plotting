@@ -131,9 +131,9 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
 
     private fun setupChartRSRP() {
         lineDataRSRP = LineData(
-                createLineDataSet(LABEL_RSRP_P, Color.BLUE),
-                createLineDataSet(LABEL_RSRP_S1, Color.RED),
-                createLineDataSet(LABEL_RSRP_S2, Color.GREEN)
+            createLineDataSet(LABEL_RSRP_P, Color.BLUE),
+            createLineDataSet(LABEL_RSRP_S1, Color.RED),
+            createLineDataSet(LABEL_RSRP_S2, Color.GREEN)
         )
         with(chartRSRP) {
             setupChart()
@@ -147,9 +147,9 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
 
     private fun setupChartRSRQ() {
         lineDataRSRQ = LineData(
-                createLineDataSet(LABEL_RSRQ_P, Color.BLUE),
-                createLineDataSet(LABEL_RSRQ_S1, Color.RED),
-                createLineDataSet(LABEL_RSRQ_S2, Color.GREEN)
+            createLineDataSet(LABEL_RSRQ_P, Color.BLUE),
+            createLineDataSet(LABEL_RSRQ_S1, Color.RED),
+            createLineDataSet(LABEL_RSRQ_S2, Color.GREEN)
         )
         with(chartRSRQ) {
             setupChart()
@@ -163,9 +163,9 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
 
     private fun setupChartSINR() {
         lineDataSINR = LineData(
-                createLineDataSet(LABEL_SINR_P, Color.BLUE),
-                createLineDataSet(LABEL_SINR_S1, Color.RED),
-                createLineDataSet(LABEL_SINR_S2, Color.GREEN)
+            createLineDataSet(LABEL_SINR_P, Color.BLUE),
+            createLineDataSet(LABEL_SINR_S1, Color.RED),
+            createLineDataSet(LABEL_SINR_S2, Color.GREEN)
         )
         with(chartSINR) {
             setupChart()
@@ -231,19 +231,19 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
     private fun setTableData(netInfo: NetInfo) {
         with(progressRSRP) {
             progressDrawable = ContextCompat.getDrawable(
-                    this@MainActivity, ChartType.RSRP.getProgressDrawable(netInfo.RSRP)
+                this@MainActivity, ChartType.RSRP.getProgressDrawable(netInfo.RSRP)
             )
             animate(duration = ANIMATION_DURATION)
         }
         with(progressRSRQ) {
             progressDrawable = ContextCompat.getDrawable(
-                    this@MainActivity, ChartType.RSRQ.getProgressDrawable(netInfo.RSRQ)
+                this@MainActivity, ChartType.RSRQ.getProgressDrawable(netInfo.RSRQ)
             )
             animate(duration = ANIMATION_DURATION)
         }
         with(progressSINR) {
             progressDrawable = ContextCompat.getDrawable(
-                    this@MainActivity, ChartType.SINR.getProgressDrawable(netInfo.SINR)
+                this@MainActivity, ChartType.SINR.getProgressDrawable(netInfo.SINR)
             )
             animate(duration = ANIMATION_DURATION)
         }
@@ -288,16 +288,16 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
         }
 
         private fun createLineDataSet(label: String?, @ColorInt color: Int) =
-                LineDataSet(null, label).apply {
-                    axisDependency = YAxis.AxisDependency.LEFT
-                    setColor(color)
-                    highLightColor = Color.BLACK
-                    lineWidth = 1.5f
-                    setDrawCircles(true)
-                    setCircleColor(color)
-                    setDrawValues(false)
-                    setDrawCircleHole(false)
-                    mode = LineDataSet.Mode.CUBIC_BEZIER
-                }
+            LineDataSet(null, label).apply {
+                axisDependency = YAxis.AxisDependency.LEFT
+                setColor(color)
+                highLightColor = Color.BLACK
+                lineWidth = 1.5f
+                setDrawCircles(true)
+                setCircleColor(color)
+                setDrawValues(false)
+                setDrawCircleHole(false)
+                mode = LineDataSet.Mode.CUBIC_BEZIER
+            }
     }
 }

@@ -9,7 +9,7 @@ import javax.inject.Inject
 
 class NetInfoRepository @Inject constructor(private val service: MainService) {
     fun getNetInfo(): LiveData<Response<NetInfo>> =
-            service.getNetInfo(id = Random().nextInt(BOUND) + 1)
+        service.getNetInfo(id = Random().nextInt(BOUND) + 1)
 }
 
 private const val BOUND = 30
