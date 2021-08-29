@@ -1,9 +1,10 @@
 package com.example.android.rtdp.implementation.java.di;
 
-import com.example.android.rtdp.implementation.java.MainViewModel;
-
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
+
+import com.example.android.rtdp.implementation.java.MainViewModel;
+
 import dagger.Binds;
 import dagger.Module;
 import dagger.multibindings.IntoMap;

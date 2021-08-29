@@ -1,9 +1,10 @@
 package com.example.android.rtdp.implementation.java.data.source.remote;
 
-import com.google.gson.Gson;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import com.google.gson.Gson;
+
 import okhttp3.Headers;
 
 @SuppressWarnings("unused")

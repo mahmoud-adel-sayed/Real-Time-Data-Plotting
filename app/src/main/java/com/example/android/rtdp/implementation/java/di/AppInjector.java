@@ -4,12 +4,13 @@ import android.app.Activity;
 import android.app.Application;
 import android.os.Bundle;
 
-import com.example.android.rtdp.implementation.java.App;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
+
+import com.example.android.rtdp.implementation.java.App;
+
 import dagger.android.AndroidInjection;
 import dagger.android.support.AndroidSupportInjection;
 import dagger.android.support.HasSupportFragmentInjector;

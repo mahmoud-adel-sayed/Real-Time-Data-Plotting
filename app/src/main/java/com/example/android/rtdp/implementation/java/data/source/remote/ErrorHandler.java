@@ -2,12 +2,12 @@ package com.example.android.rtdp.implementation.java.data.source.remote;
 
 import android.app.Application;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import com.example.android.rtdp.R;
 
 import java.io.IOException;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 public final class ErrorHandler {
 

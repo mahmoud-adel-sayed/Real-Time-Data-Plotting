@@ -1,11 +1,11 @@
 package com.example.android.rtdp.implementation.java.data.model;
 
+import androidx.annotation.NonNull;
+
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Objects;
-
-import androidx.annotation.NonNull;
 
 @SuppressWarnings("unused")
 public class NetInfo {

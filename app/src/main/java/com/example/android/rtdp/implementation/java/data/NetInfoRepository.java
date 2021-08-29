@@ -2,18 +2,18 @@ package com.example.android.rtdp.implementation.java.data;
 
 import android.app.Application;
 
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+
 import com.example.android.rtdp.implementation.java.data.model.NetInfo;
 import com.example.android.rtdp.implementation.java.data.service.MainService;
 import com.example.android.rtdp.implementation.java.data.source.remote.RemoteDataSource;
 import com.example.android.rtdp.implementation.java.data.source.remote.RemoteResponseHandler;
 import com.example.android.rtdp.implementation.java.data.source.remote.Response;
 
-import javax.inject.Inject;
-
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
-
 import java.util.Random;
+
+import javax.inject.Inject;
 
 public final class NetInfoRepository extends BaseRepository {
     private static final int BOUND = 30;

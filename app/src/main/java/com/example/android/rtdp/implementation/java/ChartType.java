@@ -1,10 +1,10 @@
 package com.example.android.rtdp.implementation.java;
 
+import androidx.annotation.DrawableRes;
+
 import com.example.android.rtdp.R;
 
 import java.util.Random;
-
-import androidx.annotation.DrawableRes;
 
 public enum ChartType {
     RSRP(-140f, -60f, 0.3f) {

@@ -1,8 +1,9 @@
 package com.example.android.rtdp.implementation.java.data.source.remote;
 
+import androidx.annotation.NonNull;
+
 import java.io.IOException;
 
-import androidx.annotation.NonNull;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
